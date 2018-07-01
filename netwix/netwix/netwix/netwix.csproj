@@ -2,7 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>netwix</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\SeriesService\**" />
+    <EmbeddedResource Remove="Services\SeriesService\**" />
+    <None Remove="Services\SeriesService\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />

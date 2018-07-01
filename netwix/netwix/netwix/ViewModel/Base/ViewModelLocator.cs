@@ -1,7 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Net.Http;
 using Autofac;
+using netwix.Infra;
+using netwix.Infra.Api;
+using netwix.Infra.HttpTools;
+using netwix.Services;
+using Refit;
 
 namespace netwix.ViewModel.Base
 {
@@ -9,17 +13,38 @@ namespace netwix.ViewModel.Base
     {
         IContainer _container;
         ContainerBuilder _containerBuilder;
-
-        static readonly ViewModelLocator _instance = new ViewModelLocator;
+        private bool api;
+        static readonly ViewModelLocator _instance = new ViewModelLocator();
 
         public static ViewModelLocator Instance
         {
             get { return _instance; }
         }
 
+        public object AppSettings { get; }
+
         public ViewModelLocator()
         {
             _containerBuilder = new ContainerBuilder();
+
+            _containerBuilder.RegisterType<NavigationService>().As<INavigationService>();
+            _containerBuilder.RegisterType<SerieService>().As<ISerieService>();
+
+            _containerBuilder.RegisterType<MainViewModel>();
+            _containerBuilder.RegisterType<DetailViewModel>();
+
+            _containerBuilder.Register(api =>
+            {
+                var client = new HttpClient(new HttpLoggingHandler())
+                {
+                    BaseAddress = new Uri(AppSetting.ApiUrl),
+                    Timeout = TimeSpan.FromSeconds(90)
+                };
+
+                return RestService.For<ITmdbApi>(client);
+
+            }).As<ITmdbApi>().InstancePerDependency();
+
         }
 
         public T Resolve<T>() => _container.Resolve<T>();
