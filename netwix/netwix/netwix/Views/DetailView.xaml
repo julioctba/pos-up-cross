@@ -4,26 +4,28 @@
              Title="{Binding Title}"
              x:Class="netwix.Views.DetailView">
     <ContentPage.Content>
-        <StackLayout 
-            Orientation="Horizontal"
-            VerticalOptions="FillAndExpand"
-            HorizontalOptions="FillAndExpand">            
-            <StackLayout>
-                <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Margin="0, 10, 0, 0" TextColor="#000000"/>
-                <Image Source="{Binding Backdrop}" Margin="10" VerticalOptions="Center" Aspect="AspectFit"/>
-                <Label Text="Avalição:" FontSize="Small" Font="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#cb2431"/>
+        <ScrollView>
+            <StackLayout 
+                Orientation="Horizontal"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">            
+                <StackLayout>
+                    <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Margin="0, 10, 0, 0" TextColor="#000000"/>
+                    <Image Source="{Binding Backdrop}" Margin="10" VerticalOptions="Center" Aspect="AspectFit"/>
+                    <Label Text="Avalição:" FontSize="Small" Font="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#cb2431"/>
 
-                <Label Text="{Binding Votes}" FontSize="Small"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#000000"/>
+                    <Label Text="{Binding Votes}" FontSize="Small"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#000000"/>
 
-                <Label Text="Sinopse:" FontSize="Small" Font="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#cb2431"/>
+                    <Label Text="Sinopse:" FontSize="Small" Font="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#cb2431"/>
 
-                <Label Text="{Binding Overview}" FontSize="Small" VerticalTextAlignment="Start"  Margin="20, 10, 20, 10" TextColor="#000000"/>
+                    <Label Text="{Binding Overview}" FontSize="Small" VerticalTextAlignment="Start"  Margin="20, 10, 20, 10" TextColor="#000000"/>
 
-                <Label Text="Data de Lançamento:" FontSize="Small" Font="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#cb2431"/>
+                    <Label Text="Data de Lançamento:" FontSize="Small" Font="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#cb2431"/>
 
-                <Label Text="{Binding ReleaseDate}" FontSize="Small" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#000000"/>
+                    <Label Text="{Binding ReleaseDate}" FontSize="Small" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="#000000"/>
                 
-            </StackLayout>
-        </StackLayout>
+                </StackLayout>
+            </StackLayout> 
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
